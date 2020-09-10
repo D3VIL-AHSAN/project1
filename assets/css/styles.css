@@ -1,0 +1,146 @@
+.nav-pills-custom .nav-link {
+    color: #aaa;
+    background: #fff;
+    position: relative;
+}
+
+.nav-pills-custom .nav-link.active {
+    color: #45b649;
+    background: #fff;
+}
+
+
+/* Add indicator arrow for the active tab */
+@media (min-width: 992px) {
+    .nav-pills-custom .nav-link::before {
+        content: '';
+        display: block;
+        border-top: 8px solid transparent;
+        border-left: 10px solid #fff;
+        border-bottom: 8px solid transparent;
+        position: absolute;
+        top: 50%;
+        right: -10px;
+        transform: translateY(-50%);
+        opacity: 0;
+    }
+}
+
+.nav-pills-custom .nav-link.active::before {
+    opacity: 1;
+}
+$color: #fd7000;
+$size: 12px;
+$time: 1;
+
+main {
+   width: 100vw;
+   height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background:  #090707;
+}
+
+.dank-ass-loader {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   
+   .row {
+      display: flex;
+   }
+}
+
+.arrow {
+   width: 0; 
+   height: 0;
+   margin: 0 (-$size / 2);
+   border-left: $size solid transparent;
+   border-right: $size solid transparent;
+   border-bottom: ($size * 1.8) solid $color;
+   animation: blink $time + s infinite;
+   filter: drop-shadow(0 0 ($size * 1.5) $color);
+    
+   &.down {
+      transform: rotate(180deg);
+   }
+   
+   @for $i from 1 through 18 {
+      &.outer-#{$i} {
+         animation-delay: -($time / 18) * $i + s;
+      }  
+   }
+
+   @for $i from 1 through 6 {
+      &.inner-#{$i} {
+         animation-delay: -($time / 6) * $i + s;
+      }  
+   }  
+}
+
+.labels {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  span {
+    color: #666;
+  }
+}
+.progress.progress-bar {
+height: 4px;
+}
+.progress-bar {
+height: 4px;
+background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%); /* Chrome10-25,Safari5.1-6 */
+}
+.ml11 {
+   font-weight: 700;
+   font-size: 3.5em;
+ }
+ 
+ .ml11 .text-wrapper {
+   position: relative;
+   display: inline-block;
+   padding-top: 0.1em;
+   padding-right: 0.05em;
+   padding-bottom: 0.15em;
+ }
+ 
+ .ml11 .line {
+   opacity: 0;
+   position: absolute;
+   left: 0;
+   height: 100%;
+   width: 3px;
+   background-color: #fff;
+   transform-origin: 0 50%;
+ }
+ 
+ .ml11 .line1 { 
+   top: 0; 
+   left: 0;
+ }
+ 
+ .ml11 .letter {
+   display: inline-block;
+   line-height: 1em;
+ }
+
+ .ml15 {
+   font-weight: 800;
+   text-transform: uppercase;
+   letter-spacing: 0.2em;
+ }
+ 
+ .ml15 .word {
+   display: inline-block;
+   line-height: 1em;
+ }
+
+
+@keyframes blink {
+  0% { opacity: 0.1; }
+  30% { opacity: 1; }
+  100% { opacity: 0.1; }
+}
